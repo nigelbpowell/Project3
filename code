@@ -149,6 +149,13 @@ invalidBaseError:
 sum:               #function args; = array_addr, $a1 = array_len
        addi $sp, $sp, -8
        sw $ra, 0($sp) 
+       sw $s0, 4($sp)
+       
+       lb $s0, 0($a0)
+       li $t0, 1
+       bne $a1, $t0, dont_return_first
+       move $v0, $s0
+
 
 
 	jr $ra	
