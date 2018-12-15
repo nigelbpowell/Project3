@@ -160,8 +160,10 @@ dont_return_first:
        addi $a0, $a0, 1
        addi $a1, $a1, -1
        jal sum
+       add $v0, $s0, $v0
+return:
+       lw $ra, 0($sp)
+       lw $s0, 4($sp)
+       addi $sp, $sp, 8
 
-
-
-
-	jr $ra	
+       jr $ra	
