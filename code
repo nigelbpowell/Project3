@@ -5,7 +5,9 @@ inputTooLong: .asciiz "Input is too long."
 baseInvalid: .asciiz "Invalid base-34 number." 
 inputEmpty: .asciiz "Input is empty."
 stringInput: .space 40000
+
 .text
+
 
 main:
 li $v0, 8  
@@ -26,10 +28,11 @@ addi $t6, $0, 0
 
 addi $sp, $sp, -4
 sw $ra, 0($sp)
+
 li $v0, 4	#print sum_header
 la $a0, sum_header
 syscall
-	
+
 la $a0, numbers	#set arr addr
 li $a1, 5	#set arr length
 jal sum
@@ -42,6 +45,10 @@ syscall
 lw $ra, 0($sp)
 addi $sp, $sp, 4
 jr $ra
+
+
+
+
 
 skipSpaces:
 	lb $t1,0($t0)
@@ -74,6 +81,7 @@ advanceForward:
 	beq $t1, 32, advanceForward
 	
 addi $t0, $t0, -1
+
 
 lengthFinder:
 	lb $t1, ($t0)
@@ -165,5 +173,5 @@ return:
        lw $ra, 0($sp)
        lw $s0, 4($sp)
        addi $sp, $sp, 8
-
-       jr $ra	
+       
+       jr $ra
