@@ -27,6 +27,12 @@ addi $t6, $0, 0
 addi $sp, $sp, -4
 sw $ra, 0($sp)
 li $v0, 4	#print sum_header
+la $a0, sum_header
+syscall
+	
+la $a0, numbers	#set arr addr
+li $a1, 5	#set arr length
+jal sum
 
 skipSpaces:
 	lb $t1,0($t0)
