@@ -40,6 +40,8 @@ move $a0, $t0
 syscall
 
 lw $ra, 0($sp)
+addi $sp, $sp, 4
+jr $ra
 
 skipSpaces:
 	lb $t1,0($t0)
@@ -144,5 +146,9 @@ invalidBaseError:
 	syscall
 	li $v0,10 
 	syscall	 
+sum:               #function args; = array_addr, $a1 = array_len
+       addi $sp, $sp, -8
+       sw $ra, 0($sp) 
+
 
 	jr $ra	
