@@ -33,6 +33,13 @@ syscall
 la $a0, numbers	#set arr addr
 li $a1, 5	#set arr length
 jal sum
+move $t0, $v0	#get return value
+
+li $v0, 1	#now print it
+move $a0, $t0
+syscall
+
+lw $ra, 0($sp)
 
 skipSpaces:
 	lb $t1,0($t0)
