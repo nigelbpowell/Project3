@@ -1,4 +1,6 @@
 .data
+numbers: .byte 1 2 3 4 5
+sum_header: .asciiz "array sum: "
 inputTooLong: .asciiz "Input is too long."
 baseInvalid: .asciiz "Invalid base-34 number." 
 inputEmpty: .asciiz "Input is empty."
@@ -21,6 +23,10 @@ addi $s0, $0, 34
 addi $t4, $0, 1 	
 addi $t5, $0, 0 	
 addi $t6, $0, 0
+
+addi $sp, $sp, -4
+sw $ra, 0($sp)
+li $v0, 4	#print sum_header
 
 skipSpaces:
 	lb $t1,0($t0)
