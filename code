@@ -155,6 +155,12 @@ sum:               #function args; = array_addr, $a1 = array_len
        li $t0, 1
        bne $a1, $t0, dont_return_first
        move $v0, $s0
+       j return
+dont_return_first:
+       addi $a0, $a0, 1
+       addi $a1, $a1, -1
+       jal sum
+
 
 
 
